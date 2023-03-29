@@ -1,47 +1,84 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { RouterLink, RouterView } from 'vue-router'
+
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <RouterLink to="/">
+      <img alt="kasa logo" class="logo" src="@/assets/logo.svg" height="68" />
+    </RouterLink>
+      <nav>
+        <RouterLink to="/">Accueil</RouterLink>
+        <RouterLink to="/about">A Propos</RouterLink>
+      </nav>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
   </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <RouterView />
+  <footer>
+    <img alt="kasa logo" class="logo" src="@/assets/logo-white.svg" width="122"/>
+    <p>© 2020 Kasa. All rights reserved</p>
+  </footer>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
   header {
+    margin-top: 40px;
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    justify-content: space-between;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    width: 309px;
+    align-items: center;
+    text-align: right;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  nav a{
+    font-size: 24px;
+    text-decoration: none;
+    color: var(--orange);
+    font-weight: 500;
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  nav a:hover, .active-link {
+    text-decoration: underline;
   }
-}
+
+  footer {
+    background-color: #000000;
+    padding-top: 4rem;
+    height: 209px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  footer p {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--white);
+    text-align: center; 
+  }
+
+  @media screen and (max-width: 580px) {
+    header .logo{
+      height: 45px;
+    }
+
+    nav {
+      width: 140px;
+    }
+
+    nav a {
+      font-size: 12px;
+    }
+
+    footer p {
+      font-size: 12px;
+    }
+  }
+
 </style>
